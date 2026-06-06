@@ -46,8 +46,8 @@ PERIODO_DATA  = "6mo"
 INTERVALO     = "1d"  # Velas diarias
 
 # Telegram (dejar en None si no quieres enviar mensajes)
-TELEGRAM_BOT_TOKEN = 8697480527:AAG8Chyrt3glCUT4ai4d9WWEqS_RrxVzmlk   # Ejemplo: "123456:ABC-DEF..."
-TELEGRAM_CHAT_ID   = -1004297177989   # Ejemplo: "-1001234567890"
+TELEGRAM_BOT_TOKEN = "8697480527:AAG8Chyrt3glCUT4ai4d9WWEqS_RrxVzmlk"   # Ejemplo: "123456:ABC-DEF..."
+TELEGRAM_CHAT_ID   = "-1004297177989"   # Ejemplo: "-1001234567890"
 
 # =============================================================================
 # 📊  CÁLCULO DE INDICADORES
