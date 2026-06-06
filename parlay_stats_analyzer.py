@@ -57,15 +57,15 @@ CONFIG = {
     # ── API Keys ───────────────────────────────────────────────────────────
     # Deja en "" para activar datos demo automáticamente.
     # The Odds API (gratis, 500 req/mes): https://the-odds-api.com
-    "odds_api_key": "",
+    "odds_api_key": "22cadbc28a54cc1e04f78973fad1aa91",
     # BallDontLie (NBA, gratis con key): https://app.balldontlie.io
-    "balldontlie_key": "",
+    "balldontlie_key": "411df2e1-dbc5-4df0-bfdb-f3e4e989c841",
 
     # ── Telegram ───────────────────────────────────────────────────────────
     # Si ambos valores están configurados, el reporte se envía automáticamente.
     # Deja en "" para solo generar archivos locales sin enviar nada.
-    "telegram_bot_token": "",   # "123456789:AAF..."
-    "telegram_chat_id":   "",   # "-100123456789" (canal) o "123456" (usuario)
+    "telegram_bot_token": "8697845783:AAHE_CfzGJY144FBlBrnbbInNJ1B1-frz64",   # "123456789:AAF..."
+    "telegram_chat_id":   "-1003879691448",   # "-100123456789" (canal) o "123456" (usuario)
 
     # ── Parámetros de análisis ─────────────────────────────────────────────
     "n_games":                  10,     # juegos históricos a evaluar
