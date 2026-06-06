@@ -19,16 +19,16 @@
 
 CONFIG = {
     # ── Temporada NBA ──────────────────────────────────────────────────────────
-    "season":           "2024-25",
-    "season_type":      "Regular Season",   # "Regular Season" | "Playoffs"
+    "season":           "2025-26",
+    "season_type":      "Playoffs",   # "Regular Season" | "Playoffs"
 
     # ── Umbrales del modelo ────────────────────────────────────────────────────
     "edge_threshold_high":   0.10,   # ≥ 10pp → alerta HIGH
     "edge_threshold_medium": 0.06,   # ≥  6pp → alerta MEDIUM
 
     # ── Telegram (opcional) ───────────────────────────────────────────────────
-    "telegram_token":   "",          # "123456:ABC-DEF..."
-    "telegram_chat_id": "",          # "-100123456789" (canal) o "123456789" (usuario)
+    "telegram_token":   "8697845783:AAHE_CfzGJY144FBlBrnbbInNJ1B1-frz64",          # "123456:ABC-DEF..."
+    "telegram_chat_id": "-1003873526681",          # "-100123456789" (canal) o "123456789" (usuario)
 
     # ── Cuotas manuales (formato decimal europeo) ─────────────────────────────
     # Si un partido no está aquí, el sistema usa la estimación naive por récord.
