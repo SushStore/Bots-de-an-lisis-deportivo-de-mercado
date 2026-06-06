@@ -669,7 +669,7 @@ class TelegramNotifier:
         payload = {
             "chat_id":    self.chat_id,
             "text":       self.format_alert(alert),
-            "parse_mode": "Markdown",
+            
         }
         try:
             resp = requests.post(url, json=payload, timeout=10)
