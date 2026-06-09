@@ -16,8 +16,7 @@
 CONFIG = {
     # ── API-Football (RapidAPI) ──────────────────────────────────────────────
     # Obtén tu key en: https://rapidapi.com/api-sports/api/api-football
-    "API_FOOTBALL_KEY": "ffc05d5442msh0d6cdc5e550926dp12de2cjsnb5e113e904ed
-",
+    "API_FOOTBALL_KEY": "ffc05d5442msh0d6cdc5e550926dp12de2cjsnb5e113e904ed",
 
     # ── Telegram ─────────────────────────────────────────────────────────────
     "TELEGRAM_BOT_TOKEN": "TU_BOT_TOKEN_AQUI",
