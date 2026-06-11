@@ -77,15 +77,15 @@ class APIFootballClient:
     Maneja headers, rate-limit básico y fallback a demo data.
     """
 
-    BASE_URL = "https://api-football-v1.p.rapidapi.com/v3"
+    BASE_URL = "https://rapidapi.com"
     # Endpoint alternativo si tienes suscripción directa (sin RapidAPI):
     # BASE_URL = "https://v3.football.api-sports.io"
 
     def __init__(self, api_key: str):
         self.api_key  = api_key
         self.headers  = {
-            "X-RapidAPI-Key":  api_key,
-            "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+            "X-RapidAPI-Key":  ffc05d5442msh0d6cdc5e550926dp12de2cjsnb5e113e904ed,
+            "X-RapidAPI-Host": "sportapi7.p.rapidapi.com",
         }
         self._cache: dict = {}          # cache simple en memoria por sesión
         self._last_call: float = 0.0    # para respetar rate-limit
