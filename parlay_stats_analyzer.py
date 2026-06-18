@@ -352,13 +352,9 @@ class SpreadAnalyzer:
         return all_results
 
     # ── Paso 1: Eventos programados del día ────────────────────────────────
-    def _fetch_scheduled(self, sport_cfg: dict, target_date: date) -> list:
-        day = target_date.day
-        month = target_date.month
-        year = target_date.year
-        sport = sport_cfg["sport_path"]
-        url = f"{SPORTAPI_BASE}/{sport}/scheduled-events/{day}/{month}/{year}"
-
+   sport = sport_cfg["sport_path"]
+        # Usa el formato YYYY-MM-DD y la ruta v1 oficial de SportAPI
+        url = f"https://sportapi7.p.rapidapi.com/api/v1/sport/{sport}/scheduled-events/{target_date.strftime('%Y-%m-%d')}"
         try:
             resp = requests.get(
                 url,
