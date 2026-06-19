@@ -1,5 +1,5 @@
 # ==============================================================================
-# parlay_stats_analyzer.py  v5.0 (ARQUITECTURA HÍBRIDA - THE ODDS API)
+# parlay_stats_analyzer.py  v5.1 (ARQUITECTURA HÍBRIDA + PAGINACIÓN TELEGRAM)
 # ==============================================================================
 import hashlib, json, random, time, requests
 from datetime import date, datetime, timezone
@@ -87,13 +87,13 @@ class SpreadAnalyzer:
 class PlayerPropsAnalyzer:
     def analyze(self, p):
         rng = random.Random(int(hashlib.md5(p["name"].encode()).hexdigest()[:8], 16))
-        # Generar un rate determinístico de alta consistencia para los tops de tu roster
+        # Generar un rate determinístico de alta consistencia para los tops
         rate = 0.9 if p["name"] in ["Gerrit Cole", "Mookie Betts", "Freddie Freeman"] else 0.8
         return {"player": p["name"], "sport": p["sport"], "rate": rate}
 
 def run(cfg=CONFIG):
     today = _resolve_date(cfg["analysis_date"])
-    print("\n=== PARLAY STATS ANALYZER v5.0 (THE ODDS API) ===")
+    print("\n=== PARLAY STATS ANALYZER v5.1 (PAGINACIÓN TELEGRAM) ===")
     
     spreads = SpreadAnalyzer(cfg).analyze(today)
     props = [PlayerPropsAnalyzer().analyze(p) for p in cfg["roster"]]
@@ -116,13 +116,18 @@ def run(cfg=CONFIG):
     print("\n" + report_text + "\n")
     
     if cfg.get("telegram_bot_token") and cfg.get("telegram_chat_id"):
-        try:
-            # Envio limpio sin "parse_mode" para que Telegram no bloquee NUNCA el mensaje
-            payload = {"chat_id": cfg["telegram_chat_id"], "text": report_text}
-            resp = requests.post(f"https://api.telegram.org/bot{cfg['telegram_bot_token']}/sendMessage", json=payload)
-            if resp.status_code == 200: print("✅ Reporte VIP despachado a Telegram exitosamente.")
-            else: print(f"❌ Error Telegram: {resp.text}")
-        except Exception as e: print(f"❌ Error de conexión: {e}")
+        # DIVIDIR EL MENSAJE EN BLOQUES DE 4000 CARACTERES (Límite Telegram: 4096)
+        bloques = [report_text[i:i+4000] for i in range(0, len(report_text), 4000)]
+        for i, bloque in enumerate(bloques):
+            try:
+                payload = {"chat_id": cfg["telegram_chat_id"], "text": bloque}
+                resp = requests.post(f"https://api.telegram.org/bot{cfg['telegram_bot_token']}/sendMessage", json=payload)
+                if resp.status_code == 200: 
+                    print(f"✅ Reporte VIP (Parte {i+1}/{len(bloques)}) despachado a Telegram exitosamente.")
+                else: 
+                    print(f"❌ Error Telegram (Parte {i+1}): {resp.text}")
+            except Exception as e: 
+                print(f"❌ Error de conexión en Parte {i+1}: {e}")
 
 if __name__ == "__main__":
     run(CONFIG)
